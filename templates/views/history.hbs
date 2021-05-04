@@ -23,16 +23,16 @@
                         {{#each allTrnsc}}
                                 <tr class="align-items-center" style="transform: rotate(0);">
                                     <th class="text-center">{{this._id}}</th>
-                                    <td class="text-center">{{this.amount}}</td>
-                                    <td class="text-center">{{this.from}}</td>
-                                    <td class="text-center">{{this.to}}</td>
-                                    <td class="text-center">{{this.createdAt}}</td>
+                                    <td class="align-middle text-center">{{this.amount}}</td>
+                                    <td class="align-middle text-center">{{this.from}}</td>
+                                    <td class="align-middle text-center">{{this.to}}</td>
+                                    <td class="align-middle text-center">{{this.createdAt}}</td>
                                 </tr>
                         {{/each}}
                     </tbody>
                 </table>
             {{else}}
-                <h1>No Transaction History Present</h1>
+                <h1 class="text-center">No Transaction History Yet</h1>
             {{/if}}
         </div>
     </div>

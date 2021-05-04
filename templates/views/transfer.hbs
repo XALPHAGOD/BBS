@@ -6,11 +6,12 @@
 </head>
 <body class="d-flex justify-content-center align-items-center min-vh-100">
     <div class="container mt-5 d-flex flex-column justify-content-center align-items-center">
-        
-        <form action="/transfer" method="POST" class="p-3 w-50" style="background-color: #F7F7F7; box-shadow: 0 1px 10px #CDCDCD;">
-            <div class="row mb-3">
-                <h3 class="text-center">Balance: {{user.balance}}</h3>
-            </div>
+
+        <div class=" p-2" style="background: linear-gradient(to left, rgba(166, 0, 255, 1), rgba(0, 255, 204, 1));">
+            <h3 class="mb-0 text-center text-white">Balance: {{user.balance}}</h3>
+        </div>
+
+        <form action="/transfer" method="POST" class="p-4 w-50" style="background-color: #F7F7F7; box-shadow: 0 1px 10px #CDCDCD;">
 
             <div class="row mb-3">
                 <label for="from" class="form-label col-12 col-sm-2">From</label>

@@ -1,6 +1,6 @@
 const mongoose= require("mongoose");
 
-mongoose.connect("mongodb://localhost:27017/bank", {
+mongoose.connect("mongodb+srv://XALPHAGOD:Rockstar@2000@bbs.f6eas.mongodb.net/bank?retryWrites=true&w=majority" || "mongodb://localhost:27017/bank", {
     useCreateIndex: true,
     useNewUrlParser: true,
     useUnifiedTopology: true

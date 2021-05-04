@@ -22,15 +22,15 @@ app.set("view engine", "hbs");
 hbs.registerPartials(partialsPath);
 
 app.get("/", (req, res)=>{
-    res.render("home");
+    res.status(200).render("home");
 });
 
 app.get("/customers", async (req, res)=>{
     try {
         const allCust= await Customer.find({});
-        res.render("customers", {allCust});
+        res.status(200).render("customers", {allCust});
     } catch (err) {
-        res.render("error", {err, message: null});
+        res.status(500).render("error", {err, message: null});
     }
 });
 
@@ -38,9 +38,9 @@ app.get("/customers/:id", async (req, res)=>{
     try {
         await Customer.findById(req.params.id)
         .populate("transactions")
-        .exec((err, user)=>{res.render("custDetails", {user})});
+        .exec((err, user)=>{res.status(200).render("custDetails", {user})});
     } catch (err) {
-        res.render("error", {err, message: null});
+        res.status(500).render("error", {err, message: null});
     }
 });
 
@@ -48,9 +48,9 @@ app.get("/transfer/:id", async (req, res)=>{
     try {
         const user= await Customer.findById(req.params.id);
         const allUsers= (await Customer.find({})).filter((each)=>each._id!=req.params.id);
-        res.render("transfer", {user, allUsers});
+        res.status(200).render("transfer", {user, allUsers});
     } catch (err) {
-        res.render("error", {err, message: null});
+        res.status(500).render("error", {err, message: null});
     }
 });
 
@@ -60,7 +60,7 @@ app.post("/transfer", async (req, res)=>{
         const to= await Customer.findById(req.body.to);
         const amount= req.body.amount;
         if(amount==='')
-            res.render("error", {err: null, message: "Invalid Amount/ Amount Cannot Be 0"});
+            res.status(400).render("error", {err: null, message: "Invalid Amount/ Amount Cannot Be Empty or 0"});
         if(amount<=from.balance){
             const newTrnsc= new Transaction({
                 amount: amount,
@@ -77,21 +77,21 @@ app.post("/transfer", async (req, res)=>{
 
             await from.save();
             await to.save();
-            res.render("success", {trnsc: saveTrnsc});
+            res.status(200).render("success", {trnsc: saveTrnsc});
         }
         else
-            res.render("error", {error: null, message: "Insufficient Balance"});
+            res.status(400).render("error", {error: null, message: "Insufficient Balance"});
     } catch (err) {
-        res.render("error", {err, message: null});
+        res.status(500).render("error", {err, message: null});
     }
 });
 
 app.get("/history", async (req, res)=>{
     try {
         const allTrnsc= await Transaction.find({});
-        res.render("history", {allTrnsc});
+        res.status(200).render("history", {allTrnsc});
     } catch (err) {
-        res.render("error", {err, message: null});
+        res.status(500).render("error", {err, message: null});
     }
 });
 
@@ -106,14 +106,16 @@ app.post("/register", async (req, res)=>{
             balance: req.body.balance
         })
         await regUser.save();
-        res.redirect("home");
+        res.status(200).render("home");
     }catch(err){
-        res.render("error", {err: null, message: "Invalid User Credentials, All Fields are Mandatory, Email should be Unique"});   
+        res.status(400).render("error", {err: null, message: "Invalid User Credentials, All Fields are Mandatory, Email should be Unique"});   
     }
 });
 
 app.all("*", (req, res)=>{
-    res.render("home");
+    res.status(200).render("home");
 });
 
-app.listen(port, ()=>console.log(`PORT: ${port}`)); 
+app.listen(port, ()=>{
+    console.log(`PORT: ${port}`)
+}); 

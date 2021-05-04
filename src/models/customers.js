@@ -1,5 +1,4 @@
 const mongoose= require("mongoose");
-const Transaction= require("./transactions");
 
 const customerSchema= new mongoose.Schema({
     username: {
@@ -25,7 +24,7 @@ const customerSchema= new mongoose.Schema({
     },
     transactions: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: Transaction
+        ref: "Transaction"      //tells which collection to look into
     }]
 });
 
