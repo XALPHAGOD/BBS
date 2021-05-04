@@ -1,0 +1,11 @@
+.gradient-custom {
+  background: linear-gradient(to left, rgba(166, 0, 255, 1), rgba(0, 255, 204, 1));
+}
+
+.navbar-dark .navbar-nav .nav-link{
+  color: white;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover{
+  color: rgba(0, 255, 204, 1);
+}

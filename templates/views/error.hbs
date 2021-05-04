@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {{>links}}
+    <title>Error</title>
+</head>
+<body class="d-flex flex-column justify-content-center min-vh-100">
+    {{>header}}
+    <div class="container d-flex flex-column align-items-center">   
+        <h1>{{err}}</h1>
+        <h1>{{message}}</h1>
+        <a class="btn btn-primary mt-5" href="/home">Home</a>
+    </div>
+    {{>footer}}
+    {{>closing}}
+</body>
+</html>

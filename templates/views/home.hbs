@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {{>links}}
+    <link rel="stylesheet" href="css/home.css">
+    <title>BBS</title>
+</head>
+<body class="d-flex flex-column min-vh-100">
+    {{>header}}
+
+    <div class="container" style="font-family: 'Abel', sans-serif;">
+        <div class="text-center mb-5" style="color: aliceblue;">
+            <h1 class="display-4 text center" style="font-family: 'Dancing Script', cursive; color: #000;">Welcome To BBS</h1>
+            <h2 style="font-family: 'Dancing Script', cursive; color: #000;">"Banking is Necessary, Banks are Not."</h2>
+        </div>
+        <div class="row mb-2">
+            <div class="col-md-4 col-sm-6 p-4 d-flex flex-column align-items-center">
+                <h2><i class="fas fa-money-check-alt"></i></h2>
+                <h2>Accounts</h2>
+            </div>
+            <div class="col-md-4 col-sm-6 p-4 d-flex flex-column align-items-center">
+                <h2><i class="fas fa-hand-holding-usd"></i></h2>
+                <h2>Transfer</h2>
+            </div>
+            <div class="col-md-4 col-sm-6 p-4 d-flex flex-column align-items-center">
+                <h2><i class="fas fa-credit-card"></i></h2>
+                <h2>Cards</h2>
+            </div>
+            <div class="col-md-4 col-sm-6 p-4 d-flex flex-column align-items-center">
+                <h2><i class="fas fa-file-invoice-dollar"></i></h2>
+                <h2>Bill Payments</h2>
+            </div>
+            <div class="col-md-4 col-sm-6 p-4 d-flex flex-column align-items-center">
+                <h2><i class="fas fa-handshake"></i></h2>
+                <h2>Loans</h2>
+            </div>
+            <div class="col-md-4 col-sm-6 p-4 d-flex flex-column align-items-center">
+                <h2><i class="fas fa-donate"></i></h2>
+                <h2>Insurance & Investments</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col py-4 d-flex justify-content-center">
+                <a class="btn p-0" href="/customers">
+                    <div class="card card-custom d-flex align-items-center">
+                        <img src="images/users.png" class="card-img-top" alt="..." style="width: 5rem;">
+                        <h4>Customers</h4>
+                    </div>
+                </a>
+            </div>
+            <div class="col py-4 d-flex justify-content-center">
+                <a class="btn p-0" href="/history">
+                    <div class="card card-custom d-flex align-items-center">
+                        <img src="images/trnsc.jpg" class="card-img-top" alt="..." style="width: 5rem;">
+                        <h4>All Transactions</h4>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    {{>footer}}
+    {{>closing}}
+</body>
+</html>

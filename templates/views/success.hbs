@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {{>links}}
+    <title>Success</title>
+</head>
+<body class="d-flex flex-column justify-content-center min-vh-100">
+    {{>header}}
+    <div class="container d-flex flex-column align-items-center">   
+        <h1 class="text-success">Transaction Successful</h1>
+        <h2>Transaction Id: {{trnsc._id}}</h2>
+        <h2>Amount: {{trnsc.amount}}</h2>
+        <h4>From: {{trnsc.from}}</h4>
+        <h4>To: {{trnsc.to}}</h4>
+        <h3>At: {{trnsc.createdAt}}</h3>
+        <a class="btn btn-primary mt-5" href="/home">Home</a>
+    </div>
+    {{>footer}}
+    {{>closing}}
+</body>
+</html>

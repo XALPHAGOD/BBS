@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {{>links}}
+    <title>History</title>
+</head>
+<body class="d-flex flex-column min-vh-100">
+    {{>header}}
+    <div class="container mb-5">
+        <div>
+            {{#if allTrnsc}}
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th class="text-center">Transaction Id</th>
+                            <th class="text-center">Amount</th>
+                            <th class="text-center">From</th>
+                            <th class="text-center">To</th>
+                            <th class="text-center">Time Stamp</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each allTrnsc}}
+                                <tr class="align-items-center" style="transform: rotate(0);">
+                                    <th class="text-center">{{this._id}}</th>
+                                    <td class="text-center">{{this.amount}}</td>
+                                    <td class="text-center">{{this.from}}</td>
+                                    <td class="text-center">{{this.to}}</td>
+                                    <td class="text-center">{{this.createdAt}}</td>
+                                </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            {{else}}
+                <h1>No Transaction History Present</h1>
+            {{/if}}
+        </div>
+    </div>
+    {{>footer}}
+    {{>closing}}
+</body>
+</html>

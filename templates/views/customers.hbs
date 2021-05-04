@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {{>links}}
+    <title>Customers</title>
+</head>
+<body class="d-flex flex-column min-vh-100">
+    {{>header}}
+    <div class="container">
+        <div>
+            {{#if allCust}}
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th class="text-center">User Id</th>
+                            <th class="text-center">Username</th>
+                            <th class="text-center">Email</th>
+                            <th class="text-center">Balance</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each allCust}}
+                                <tr class="align-items-center" style="transform: rotate(0);">
+                                    <th class="text-center"><a href="/customers/{{this._id}}" class="stretched-link btn border-0 shadow-none">{{this._id}}</a></th>
+                                    <td class="text-center">{{this.username}}</td>
+                                    <td class="text-center">{{this.email}}</td>
+                                    <td class="text-center">{{this.balance}}</td>
+                                </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            {{else}}
+                <h1>No Customers Registered</h1>
+            {{/if}}
+        </div>
+    </div>
+    {{>footer}}
+    {{>closing}}
+</body>
+</html>
