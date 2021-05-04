@@ -6,13 +6,13 @@
 </head>
 <body class="d-flex flex-column justify-content-center min-vh-100">
     {{>header}}
-    <div class="container d-flex flex-column align-items-center">   
-        <h1 class="text-success">Transaction Successful</h1>
-        <h2>Transaction Id: {{trnsc._id}}</h2>
-        <h2>Amount: {{trnsc.amount}}</h2>
-        <h4>From: {{trnsc.from}}</h4>
-        <h4>To: {{trnsc.to}}</h4>
-        <h3>At: {{trnsc.createdAt}}</h3>
+    <div class="container d-flex flex-column align-items-center mb-5">   
+        <h1 class="text-center text-success">Transaction Successful</h1>
+        <h2 class="text-center text-break">Transaction Id: {{trnsc._id}}</h2>
+        <h2 class="text-center">Amount: {{trnsc.amount}}</h2>
+        <h4 class="text-center">From: {{trnsc.from}}</h4>
+        <h4 class="text-center">To: {{trnsc.to}}</h4>
+        <h3 class="text-center">At: {{trnsc.createdAt}}</h3>
         <a class="btn btn-primary mt-5" href="/home">Acknowledged</a>
     </div>
     {{>footer}}

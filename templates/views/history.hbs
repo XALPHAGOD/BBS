@@ -7,32 +7,38 @@
 <body class="d-flex flex-column min-vh-100">
     {{>header}}
     <div class="container mb-5">
-        <div>
             {{#if allTrnsc}}
-                <table class="table table-hover">
-                    <thead>
-                        <tr>
-                            <th class="text-center">Transaction Id</th>
-                            <th class="text-center">Amount</th>
-                            <th class="text-center">From</th>
-                            <th class="text-center">To</th>
-                            <th class="text-center">Time Stamp</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {{#each allTrnsc}}
-                                <tr class="align-items-center" style="transform: rotate(0);">
-                                    <th class="text-center">{{this._id}}</th>
-                                    <td class="align-middle text-center">{{this.amount}}</td>
-                                    <td class="align-middle text-center">{{this.from}}</td>
-                                    <td class="align-middle text-center">{{this.to}}</td>
-                                    <td class="align-middle text-center">{{this.createdAt}}</td>
-                                </tr>
-                        {{/each}}
-                    </tbody>
-                </table>
+                <div>
+                    <h1 class="text-center mb-4" style="font-family: 'Dancing Script', cursive; color: #00ff00;">All Transactions</h1>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th class="align-middle text-center">Transaction Id</th>
+                                <th class="align-middle text-center">Amount</th>
+                                <th class="align-middle text-center">From</th>
+                                <th class="align-middle text-center">To</th>
+                                <th class="align-middle text-center">Time Stamp</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each allTrnsc}}
+                                    <tr class="align-items-center" style="transform: rotate(0);">
+                                        <th class="align-middle text-center">{{this._id}}</th>
+                                        <td class="align-middle text-center">{{this.amount}}</td>
+                                        <td class="align-middle text-center">{{this.from}}</td>
+                                        <td class="align-middle text-center">{{this.to}}</td>
+                                        <td class="align-middle text-center">{{this.createdAt}}</td>
+                                    </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
             {{else}}
-                <h1 class="text-center">No Transaction History Yet</h1>
+                <div>
+                    <h1 class="text-center" style="font-family: 'Dancing Script', cursive; color: #00ff00;">No Transaction History Yet</h1>
+                </div>
             {{/if}}
         </div>
     </div>

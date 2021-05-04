@@ -4,77 +4,75 @@
     {{>links}}
     <title>Customer Details</title>
 </head>
-<body class="d-flex flex-column min-vh-100 p-5">
-    <div class="container mt-5 d-flex flex-column align-items-center">
+<body class="d-flex justify-content-center align-items-center min-vh-100">
+    <div class="container mt-5">
 
-        <div class="row d-flex flex-column align-items-center mb-5">
+        <div class="d-flex flex-column align-items-center">
+            <div class="mb-5">
 
-            <div class="card p-0">
-                <div class="card-header" style="background: linear-gradient(to left, rgba(166, 0, 255, 1), rgba(0, 255, 204, 1));">
-                    <h1 class="card-title mb-0 text-center text-white">Customer Details</h1>
+                <div class="card p-0">
+                    <div class="card-header" style="background: linear-gradient(to left, rgba(166, 0, 255, 1), rgba(0, 255, 204, 1));">
+                        <h1 class="card-title mb-0 text-center text-white">Customer Details</h1>
+                    </div>
+                    <div class="card-body">
+                        <h2 class="text-center mb-3">Name: {{user.username}}</h2>
+                        <h4 class="text-center mb-4">Email: {{user.email}}</h4>
+                        <h6 class="text-center mt-4">User Id: {{user._id}}</h6>
+                    </div>
+                    <div class="card-footer bg-info bg-gradient">
+                        <h2 class="text-center text-white">Balance: {{user.balance}}</h2>
+                    </div>
                 </div>
-                <div class="card-body">
-                    <h2 class="text-center mb-3">Name: {{user.username}}</h2>
-                    <h4 class="text-center mb-4">Email: {{user.email}}</h4>
-                    <h6 class="text-center mt-4">User Id: {{user._id}}</h6>
-                </div>
-                <div class="card-footer bg-info bg-gradient">
-                    <h2 class="text-center text-white">Balance: {{user.balance}}</h2>
-                </div>
+
             </div>
 
+            <div class="mb-5">
+                <a class="btn btn-primary" href="/transfer/{{user._id}}">Funds Transfer</a>
+            </div>
+
+            <div class="row mb-5 w-50 d-flex justify-content-around">
+                <a class="btn btn-primary text-white col-sm-4 my-3 px-0" href="/customers">Back</a>
+                <a class="btn btn-primary text-white col-sm-4 my-3 px-0" href="/home">Home</a>
+            </div>
         </div>
 
-        <div class="row mb-5">
-            <a class="btn btn-primary" href="/transfer/{{user._id}}">Funds Transfer</a>
-        </div>
-
-        <div class="row mb-5 w-50 d-flex justify-content-around">
-            <a class="btn btn-primary text-white col-sm-4 my-3" href="/customers">Back</a>
-            <a class="btn btn-primary text-white col-sm-4 my-3" href="/home">Home</a>
-        </div>
-
-        <div class="row mb-5 d-flex flex-column align-items-center">
-            <div class="card p-0">
+        <div class="mb-5">
     
                 {{#if user.transactions}}
-                    <div class="card-header" style="background: linear-gradient(to left, rgba(166, 0, 255, 1), rgba(0, 255, 204, 1));">
-                        <h1 class="card-title mb-0 text-center text-white">Customer Transactions</h1>
+                    <div class="w-100 mb-2" style="background: linear-gradient(to left, rgba(166, 0, 255, 1), rgba(0, 255, 204, 1));">
+                        <h1 class="mb-0 p-1 text-center text-white">Customer Transactions</h1>
                     </div>
-                    <div class="card-body p-1">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th class="align-middle text-center">Transaction Id</th>
+                                        <th class="align-middle text-center">Amount</th>
+                                        <th class="align-middle text-center">From</th>
+                                        <th class="align-middle text-center">To</th>
+                                        <th class="align-middle text-center">Time Stamp</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {{#each user.transactions}}
+                                            <tr class="align-items-center" style="transform: rotate(0);">
+                                                <th class="align-middle text-center">{{this._id}}</th>
+                                                <td class="align-middle text-center">{{this.amount}}</td>
+                                                <td class="align-middle text-center">{{this.from}}</td>
+                                                <td class="align-middle text-center">{{this.to}}</td>
+                                                <td class="align-middle text-center">{{this.createdAt}}</td>
+                                            </tr>
+                                    {{/each}}
+                                </tbody>
+                            </table>
+                        </div>
 
-                        <table class="table table-hover">
-                            <thead>
-                                <tr>
-                                    <th class="text-center">Transaction Id</th>
-                                    <th class="text-center">Amount</th>
-                                    <th class="text-center">From</th>
-                                    <th class="text-center">To</th>
-                                    <th class="text-center">Time Stamp</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {{#each user.transactions}}
-                                        <tr class="align-items-center" style="transform: rotate(0);">
-                                            <th class="text-center">{{this._id}}</th>
-                                            <td class="align-middle text-center">{{this.amount}}</td>
-                                            <td class="align-middle text-center">{{this.from}}</td>
-                                            <td class="align-middle text-center">{{this.to}}</td>
-                                            <td class="align-middle text-center">{{this.createdAt}}</td>
-                                        </tr>
-                                {{/each}}
-                            </tbody>
-                        </table>
-
-                    </div>
-                    
                 {{else}}
-                    <div class="card-header" style="background: linear-gradient(to left, rgba(166, 0, 255, 1), rgba(0, 255, 204, 1));">
-                        <h1 class="card-title mb-0 text-center text-white">No Customer Transactions Yet</h1>
+                    <div style="background: linear-gradient(to left, rgba(166, 0, 255, 1), rgba(0, 255, 204, 1));">
+                        <h1 class="mb-0 text-center text-white">No Customer Transactions Yet</h1>
                     </div>
                 {{/if}}
 
-            </div>
         </div>
 
     </div>
